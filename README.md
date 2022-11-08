@@ -1,16 +1,18 @@
 # WhisperDO
-A method to call the openai/whisper python code from the command line without using the CLI (.exe) version of Whisper, in order to solve the issue discussed here: [Stops working after long gap with no speech? #29](https://github.com/openai/whisper/discussions/29)
-
 For use with OpenAI's [Whisper](https://github.com/openai/whisper).
 
+A method to call the Whisper’s python code from the command line without using the CLI (.exe) version of Whisper, in order to solve the issue discussed here: [Stops working after long gap with no speech? #29](https://github.com/openai/whisper/discussions/29). 
+
+In short, where the audio is multilingual and includes any significant gaps the CLI version of Whisper can fail to resume transcoding after the silence, this effect seems most noticeable when the audio is multilingual. 
+
 ## Whisper Install Process for Windows 10/11 
-[Covers the steps not explicitly set out on the main [Whisper](https://github.com/openai/whisper) page, e.g. for those who have never used python code/apps before].
+Purpose: These instructions cover the steps not explicitly set out on the main [Whisper](https://github.com/openai/whisper) page, e.g. for those who have never used python code/apps before and do not have the prerequisite software already installed. 
 
 ### Requirements: 
 - Full admin rights on your computer.
-- A PC with a CUDA-capable dedicated GPU with at least 4GB of VRAM (but more VRAM is better).
-- Online Install: An Internet connection for the initial download and setup.
-- Offline Install: Pre-download the items below using the "OPTIONAL/OFFLINE" instructions.
+- A PC with a CUDA-capable dedicated GPU with at least 4GB of VRAM (but more VRAM is better).  See: [Available models and languages](https://github.com/openai/whisper#available-models-and-languages)
+- For online installation: An Internet connection for the initial download and setup.
+- For offline installation: Download on another computer and then install manually using the "OPTIONAL/OFFLINE" instructions below.
 ### Installation
 1) Download the following items (OPTIONAL/OFFLINE, download them on a different computer and move them to your secure machine).
     1) NVIDIA CUDA drivers: https://developer.nvidia.com/cuda-downloads 
@@ -50,7 +52,7 @@ To use WhisperDO.py you simply use it in place of Whisper as shown below:
 becomes  
 <code>python whisperdo.py japanese.wav --language Japanese --task translate</code>  
 
-Useage can be pulled from whisper via "-h" and will show you the following options:
+Usage can be pulled from whisper via "-h" and will show you the following options:
 
 > usage: whisper [-h]  
 >                [--model {tiny.en,tiny,base.en,base,small.en,small,medium.en,medium,large}]  

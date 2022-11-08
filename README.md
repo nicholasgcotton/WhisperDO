@@ -3,7 +3,7 @@ For use with OpenAI's [Whisper](https://github.com/openai/whisper).
 
 A method to call the Whisper’s python code from the command line without using the CLI (.exe) version of Whisper, in order to solve the issue discussed here: [Stops working after long gap with no speech? #29](https://github.com/openai/whisper/discussions/29). 
 
-In short, where the audio is multilingual and includes any significant gaps the CLI version of Whisper can fail to resume transcoding after the silence, this effect seems most noticeable when the audio is multilingual. 
+In short, where the audio being transcribed or translated includes any significant gaps the CLI version of Whisper can fail to resume transcoding after the silence, this effect seems most noticeable when the audio is multilingual. 
 
 ## Whisper Install Process for Windows 10/11 
 Purpose: These instructions cover the steps not explicitly set out on the main [Whisper](https://github.com/openai/whisper) page, e.g. for those who have never used python code/apps before and do not have the prerequisite software already installed. 

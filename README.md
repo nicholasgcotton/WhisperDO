@@ -44,7 +44,7 @@ If you do not download these models ahead of time Whisper will attempt to downlo
 
 Note: If the links are dead updated links can be found at lines 17-27 here: [__init__.py]( https://github.com/openai/whisper/blob/f296bcd3fac41525f1c5ab467062776f8e13e4d0/whisper/__init__.py)
 
-## Usage
+## WhisperDO Usage
 
 To use WhisperDO.py you simply use it in place of Whisper as shown below:
 
@@ -72,3 +72,28 @@ Usage can be pulled from whisper via "-h" and will show you the following option
 >                [--no_speech_threshold NO_SPEECH_THRESHOLD]  
 >                audio [audio ...]  
 >               
+## SendToWhisper-English.bat Usage
+
+(For those who do not want to use the command line interface.)
+
+To use SendToWhisper-English.bat simpy save it to your computer and drag and drop any English language audio/video file onto the batch file. It can also be installed to the right-click "SendTo" menu in Windows. From the Desktop hit [Windows]+R (run) and then type "shell:SendTo" and hit Enter, then copy the batch file into the folder that appears.
+
+SendToWhisper-English.bat will use the small.en model to transcribe the file and will save the results to the user's Desktop in a new subfolder.
+To avoid duplicate folder names (since Whisper will not let us change the transcript file name) the foldername will include the date and time the transcription was started, as well as the file name of the audio file: Desktop\Transcript\[DATE] [TIME] [AUDIOFILENAME].
+
+## SendToWhisper-French.bat Usage
+
+To use SendToWhisper-French.bat simpy save it to your computer and drag and drop any French language audio file onto the batch file. It can also be installed to the right-click "SendTo" menu in Windows. From the Desktop hit [Windows]+R (run) and then type "shell:SendTo" and hit Enter, then copy the batch file into the folder that appears.
+
+The translated transcript will be saved to a new folder on the user's dekstop. To avoid duplicate folder names (since Whisper will not let us change the transcript file name) the foldername will include the date and time the translation was started, as well as the file name of the audio file: Desktop\Transcript\[DATE] [TIME] [AUDIOFILENAME].
+
+### Modifying for other languages
+
+This file can be modified for use with any other language that Whisper supports. The first four lines of the batch file are:
+```
+@echo off
+set model=large
+set lang=French
+set task=translate
+```
+Simply change the language or model or task to create a new version of the batch file for your needs, and save the file with a new name. 

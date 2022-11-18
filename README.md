@@ -72,7 +72,9 @@ Usage can be pulled from whisper via "-h" and will show you the following option
 >                [--no_speech_threshold NO_SPEECH_THRESHOLD]  
 >                audio [audio ...]  
 >               
-## SendToWhisper-English.bat Usage
+
+##  Windows Batch Files for use with Whisper
+### SendToWhisper-English.bat Usage
 
 (For those who do not want to use the command line interface.)
 
@@ -81,7 +83,7 @@ To use SendToWhisper-English.bat simpy save it to your computer and drag and dro
 SendToWhisper-English.bat will use the small.en model to transcribe the file and will save the results to the user's Desktop in a new subfolder.
 To avoid duplicate folder names (since Whisper will not let us change the transcript file name) the foldername will include the date and time the transcription was started, as well as the file name of the audio file: Desktop\Transcript\[DATE] [TIME] [AUDIOFILENAME].
 
-## SendToWhisper-French.bat Usage
+### SendToWhisper-French.bat Usage
 
 To use SendToWhisper-French.bat simpy save it to your computer and drag and drop any French language audio file onto the batch file. It can also be installed to the right-click "SendTo" menu in Windows. From the Desktop hit [Windows]+R (run) and then type "shell:SendTo" and hit Enter, then copy the batch file into the folder that appears.
 

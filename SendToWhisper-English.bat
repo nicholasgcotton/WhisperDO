@@ -19,7 +19,6 @@ python -c "import whisper; from whisper.transcribe import cli; cli()" %1 --task 
 echo Transcription complete. Files have been saved to %short_dir%
 shift
 Goto :loop
-exit /b
 :NoSource
 echo Error: No source file provided. This script will now exit.
 pause

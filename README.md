@@ -83,6 +83,8 @@ To use SendToWhisper-English.bat simpy save it to your computer and drag and dro
 SendToWhisper-English.bat will use the small.en model to transcribe the file and will save the results to the user's Desktop in a new subfolder.
 To avoid duplicate folder names (since Whisper will not let us change the transcript file name) the foldername will include the date and time the transcription was started, as well as the file name of the audio file: Desktop\Transcript\[DATE] [TIME] [AUDIOFILENAME].
 
+This batch script will also accept multiple inputs, so you can select and send-to multiple files and Whisper will process them in series.
+
 ### SendToWhisper-French.bat Usage
 
 To use SendToWhisper-French.bat simpy save it to your computer and drag and drop any French language audio file onto the batch file. It can also be installed to the right-click "SendTo" menu in Windows. From the Desktop hit [Windows]+R (run) and then type "shell:SendTo" and hit Enter, then copy the batch file into the folder that appears.
@@ -99,3 +101,5 @@ set lang=French
 set task=translate
 ```
 Simply change the language or model or task to create a new version of the batch file for your needs, and save the file with a new name. 
+
+This batch script will also accept multiple inputs, so you can select and send-to multiple files and Whisper will process them in series. Make sure all submissions are in the same language.

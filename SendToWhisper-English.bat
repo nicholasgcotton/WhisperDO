@@ -1,5 +1,5 @@
-REM Updated 2022-12-01 to add loop for multiple files so items can be queued to run one after another. 
 @echo off
+REM Updated 2022-12-01 to add loop for multiple files so items can be queued to run one after another. 
 IF "%~1" == "" (GOTO NoSource)
 :loop
 IF "%~1" == "" (GOTO :Complete)

@@ -16,7 +16,7 @@ Purpose: These instructions cover the steps not explicitly set out on the main [
 ### Installation
 1) Download the following items (OPTIONAL/OFFLINE, download them on a different computer and move them to your secure machine).
     1) NVIDIA CUDA drivers: https://developer.nvidia.com/cuda-downloads 
-    2) Python 3.7 or higher (x64 version) from https://www.python.org/
+    2) Python 3.9 or 3.10 (x32 version) from https://www.python.org/
     3) FFMPEG for Windows from https://ffmpeg.org/download.html
     4) Git for windows from https://gitforwindows.org/
 2) Add Python and FFMPEG to the system PATH variable ([Instructions](https://linuxhint.com/add-directory-to-path-environment-variables-windows/))

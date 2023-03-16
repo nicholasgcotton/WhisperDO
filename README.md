@@ -17,10 +17,12 @@ Purpose: These instructions cover the steps not explicitly set out on the main [
 1. Download the following items (OPTIONAL/OFFLINE, download them on a different computer and move them to your secure machine).
     1. NVIDIA CUDA drivers: https://developer.nvidia.com/cuda-downloads 
     2. Python 3.9 or 3.10 (x64 version) from https://www.python.org/ (Whisper claims to run with >3.7 but as of 2023-01-18 some dependencies require >3.7 but <3.11).
-    3. FFMPEG for Windows from via Scoop (https://scoop.sh/), in powershell run
-        1. Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
-        2. irm get.scoop.sh | iex
-        3. scoop install ffmpeg
+    3. FFMPEG 
+        1. To install via Scoop (https://scoop.sh/), in powershell run
+            1. Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+            2. irm get.scoop.sh | iex
+            3. scoop install ffmpeg
+        2. OPTIONAL/OFFLINE: Follow instructions here: [How to install and use FFMPEG](https://www.thewindowsclub.com/how-to-install-ffmpeg-on-windows-10) and make sure not to skip the part about adding FFMPEG to the Windows PATH variable. 
     4. Git for windows from https://gitforwindows.org/
 3. Reboot
 4. Install Whisper 

@@ -20,7 +20,7 @@ echo ------------------------------------------
 echo Target File: %1
 echo Running Whisper --model %model% --language %lang% --task %task% --output_dir %short_dir%
 mkdir %target_dir%
-python -c "import whisper; from whisper.transcribe import cli; cli()" %1 --model %model% --language %lang% --task %task% --output_dir %target_dir
+python -c "import whisper; from whisper.transcribe import cli; cli()" %1 --model %model% --language %lang% --task %task% --output_dir %target_dir%
 echo Task complete. Files have been saved to %short_dir%
 shift
 Goto :loop

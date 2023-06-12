@@ -1,5 +1,6 @@
 @echo off
 REM Updated 2022-12-01 to add loop for multiple files so items can be queued to run one after another. 
+REM For offline models you must add --model_dir to the Whisper command. E.g. "--model_dir "C:\Users\Nicholas\.cache\whisper"
 IF "%~1" == "" (GOTO NoSource)
 :loop
 IF "%~1" == "" (GOTO :Complete)

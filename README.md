@@ -63,6 +63,10 @@ To use WhisperDO.py you simply use it in place of Whisper as shown below:
 becomes  
 <code>python whisperdo.py japanese.wav --language Japanese --task translate</code>  
 
+For offline usage add the path to the model you want to use:
+
+<Code>python whisperdo.py japanese.wav --language Japanese --model_dir "PATH" --model SIZE --task trasnalate</code>
+
 Usage can be pulled from whisper via "-h" and will show you the following options:
 
 > usage: whisper [-h]  

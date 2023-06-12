@@ -30,23 +30,30 @@ Purpose: These instructions cover the steps not explicitly set out on the main [
     <code>pip install git+https://github.com/openai/whisper.git </code>
     2. OPTIONAL/OFFLINE: 
         1. Install Python on another computer with an internet connection, then you can use pip to download (but not install) Whisper so you can move it to your secure machine. Use <code>pip download -r requirements.txt</code> using the [Whisper requirements.txt](https://github.com/openai/whisper/blob/main/requirements.txt).
-        2. Copy the files + the requirements.txt to your offline machine and then run <code>pip install --no-index --find-links c:\\[LOCATION OF DOWNLOADED FILES] requirements.txt</code>
+        2. Copy the files + the requirements.txt to your offline machine and then run <code>pip install --no-index --find-links c:\\[LOCATION OF DOWNLOADED FILES]\\requirements.txt</code>
 5. Download [WhisperDO.py](https://github.com/nicholasgcotton/WhisperDO/blob/main/WhisperDO.py) and put it in your working directory with your audio file(s).
-6. OPTIONAL/OFFLINE: If you are setting up a computer that is offline you also need to download the following model files and place them in C:\Users\[username]\.cache\whisper e.g. C:\Users\nic\\.cache\whisper.  
-If you do not download these models ahead of time Whisper will attempt to download them as needed, and will fail if there is no active internet connection.
-    1. [Tiny.En](https://openaipublic.azureedge.net/main/whisper/models/d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03/tiny.en.pt)
-    2. [Tiny](https://openaipublic.azureedge.net/main/whisper/models/65147644a518d12f04e32d6f3b26facc3f8dd46e5390956a9424a650c0ce22b9/tiny.pt)
-    3. [Base.En](https://openaipublic.azureedge.net/main/whisper/models/25a8566e1d0c1e2231d1c762132cd20e0f96a85d16145c3a00adf5d1ac670ead/base.en.pt)
-    4. [Base](https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt)
-    5. [Small.En](https://openaipublic.azureedge.net/main/whisper/models/f953ad0fd29cacd07d5a9eda5624af0f6bcf2258be67c92b79389873d91e0872/small.en.pt)
-    6. [Small](https://openaipublic.azureedge.net/main/whisper/models/9ecf779972d90ba49c06d968637d720dd632c55bbf19d441fb42bf17a411e794/small.pt)
-    7. [Medium.En](https://openaipublic.azureedge.net/main/whisper/models/d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f/medium.en.pt)
-    8. [Medium](https://openaipublic.azureedge.net/main/whisper/models/345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1/medium.pt)
-    9. [Large-v1](https://openaipublic.azureedge.net/main/whisper/models/e4b87e7e0bf463eb8e6956e646f1e277e901512310def2c24bf0e11bd3c28e9a/large.pt)
-    10. [Large-v2](https://openaipublic.azureedge.net/main/whisper/models/81f7c96c852ee8fc832187b0132e569d6c3065a3252ed18e56effd0b6a73e524/large-v2.pt) ([Annoucing the large-v2 model](https://github.com/openai/whisper/discussions/661))
-7. NEW OFFLINE REQUIREMENTS (2023-06). As of some recent change Whisper now calls to the internet for vocab files (at least for English, I need to test for other langauges. To avoid this you need to download the vocab.bpe and encoder.json files from the URLs specified in [openai_public.py](https://github.com/openai/tiktoken/blob/main/tiktoken_ext/openai_public.py). You will then need to change your local copy of openai_public.py which will be installed in your python folder python3.9/site-packages/tiktoken_ext/openai_public.py to point to where you downloaded the files (for ease of use I put themn in C:\User/[USERNAME]\.cache\whisper with the models. You will also have to install the pip utility "blobfile". This can be done while online by running "pip install blobfile", or for offline install you can adapter the instructions from step 2 above, substituting blobfile for whisper.
+6. OPTIONAL/OFFLINE: If you are setting up a computer that is offline you also need to download the following files
+    -  Model files place them in C:\Users\[username]\\.cache\whisper e.g. C:\Users\nic\\.cache\whisper.  
+    If you do not download these models ahead of time Whisper will attempt to download them as needed, and will fail if there is no active internet connection.
+        1. [Tiny.En](https://openaipublic.azureedge.net/main/whisper/models/d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03/tiny.en.pt)
+        2. [Tiny](https://openaipublic.azureedge.net/main/whisper/models/65147644a518d12f04e32d6f3b26facc3f8dd46e5390956a9424a650c0ce22b9/tiny.pt)
+        3. [Base.En](https://openaipublic.azureedge.net/main/whisper/models/25a8566e1d0c1e2231d1c762132cd20e0f96a85d16145c3a00adf5d1ac670ead/base.en.pt)
+        4. [Base](https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt)
+        5. [Small.En](https://openaipublic.azureedge.net/main/whisper/models/f953ad0fd29cacd07d5a9eda5624af0f6bcf2258be67c92b79389873d91e0872/small.en.pt)
+        6. [Small](https://openaipublic.azureedge.net/main/whisper/models/9ecf779972d90ba49c06d968637d720dd632c55bbf19d441fb42bf17a411e794/small.pt)
+        7. [Medium.En](https://openaipublic.azureedge.net/main/whisper/models/d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f/medium.en.pt)
+        8. [Medium](https://openaipublic.azureedge.net/main/whisper/models/345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1/medium.pt)
+        9. [Large-v1](https://openaipublic.azureedge.net/main/whisper/models/e4b87e7e0bf463eb8e6956e646f1e277e901512310def2c24bf0e11bd3c28e9a/large.pt)
+        10. [Large-v2](https://openaipublic.azureedge.net/main/whisper/models/81f7c96c852ee8fc832187b0132e569d6c3065a3252ed18e56effd0b6a73e524/large-v2.pt) ([Annoucing the large-v2 model](https://github.com/openai/whisper/discussions/661))
+    - Note: If the links are dead updated links can be found at lines 17-27 here: [__init__.py]( https://github.com/openai/whisper/blob/main/whisper/__init__.py) 
+    - NEW OFFLINE REQUIREMENTS. (See [issue 1399](https://github.com/openai/whisper/discussions/1399) As of some recent change Whisper now calls to the internet for vocab files. Downloading the vocab.bpe and encoder.json files from the URLs specified in [openai_public.py](https://github.com/openai/tiktoken/blob/main/tiktoken_ext/openai_public.py) and updating some local code will re-enable offline usage.  
+        - Download [Vocab.bpe](https://openaipublic.blob.core.windows.net/gpt-2/encodings/main/vocab.bpe)
+        - Download [Encoder.json](https://openaipublic.blob.core.windows.net/gpt-2/encodings/main/encoder.json)
+        - Install the files to a folder of your choosing, for ease of use I recommend C:\Users\[username]\\.cache\whisper e.g. C:\Users\nic\\.cache\whisper. 
+        - You will then need to change your local copy of openai_public.py which will be installed in your python folder e.g. python3.9/site-packages/tiktoken_ext/openai_public.py to point to where you downloaded the files. Change lines 11 and 12 to remove the URL "https://openaipublic.blob.core.windows.net/gpt-2/encodings/main/" and replace it with your local copy, e.g. "C:/Users/nic/.cache/whisper"
+        - An extra utility is requied to open the local files. Install the pip utility "blobfile". This can be done while online by running "pip install blobfile". I do not currently have an offline install method for this utility. 
 
-Note: If the links are dead updated links can be found at lines 17-27 here: [__init__.py]( https://github.com/openai/whisper/blob/main/whisper/__init__.py)
+
 
 ## WhisperDO Usage
 

@@ -5,6 +5,7 @@ set task=translate
 REM Change lines 2-4 to make a new version of the batch file for another language. Don't forget to rename the new file to Whisper-LANGUAGE.bat
 REM You should NOT change anything below this point.
 REM Updated 2022-12-01 to add loop for mulitple files of the same language, so items can be queued to run one after another. 
+REM For offline models you must add --model_dir to the Whisper command. E.g. "--model_dir "C:\Users\Nicholas\.cache\whisper"
 IF "%~1" == "" (GOTO NoSource)
 :loop
 IF "%~1" == "" (GOTO :Complete)

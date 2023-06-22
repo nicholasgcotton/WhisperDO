@@ -25,13 +25,12 @@ Purpose: These instructions cover the steps not explicitly set out on the main [
         2. OPTIONAL/OFFLINE: Follow instructions here: [How to install and use FFMPEG](https://www.thewindowsclub.com/how-to-install-ffmpeg-on-windows-10) and make sure not to skip the part about adding FFMPEG to the Windows PATH variable. 
     4. Git for windows from https://gitforwindows.org/
 2. Reboot after installing these items.
-3. Install Whisper: If you're online you can use pip (it's part of Python), open a command line and type  
-    <code>pip install git+https://github.com/openai/whisper.git </code>
+3. Install Whisper: If you're online you can use pip (it's part of Python), open a command line and type <code>pip install git+https://github.com/openai/whisper.git</code>.
     1. OPTIONAL/OFFLINE: Install Python on another computer with an internet connection, then you can use pip to download (but not install) Whisper and its dependencies so you can move them to your offline machine. 
-        1.  Get whisper <code>pip download git+https://github.com/openai/whisper.git<code>
+        1.  Get whisper <code>pip download git+https://github.com/openai/whisper.git</code>
         2.  Get unlisted dependency required for offline use <code>pip download blobfile</code>
         3.  Copy the files to your offline machine and then run <code>pip install openai-whisper-20230314.zip</code> and <code>pip install blobfile-2.0.2-py3-none-any.whl</code>. Note that date/version may change when downloaded.
-4. Install Other Required files: If you are setting up a computer that is offline you also need to download the following files:
+5. Install Other Required files: If you are setting up a computer that is offline you also need to download the following files:
     1. Model files place them in C:\Users\[username]\\.cache\whisper e.g. C:\Users\nic\\.cache\whisper. Note: If the links are dead updated links can be found at lines 17-27 here: [__init__.py]( https://github.com/openai/whisper/blob/main/whisper/__init__.py) 
     If you do not download these models ahead of time Whisper will attempt to download them as needed, and will fail if there is no active internet connection.
          1. [Tiny.En](https://openaipublic.azureedge.net/main/whisper/models/d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03/tiny.en.pt)

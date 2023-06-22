@@ -28,8 +28,9 @@ Purpose: These instructions cover the steps not explicitly set out on the main [
 3. Install Whisper: If you're online you can use pip (it's part of Python), open a command line and type  
     <code>pip install git+https://github.com/openai/whisper.git </code>
     1. OPTIONAL/OFFLINE: Install Python on another computer with an internet connection, then you can use pip to download (but not install) Whisper and its dependencies so you can move them to your offline machine. 
-        1.  Use <code>pip download -r requirements.txt</code> using the [Whisper offline requirements.txt](https://github.com/nicholasgcotton/WhisperDO/blob/main/requirements.txt)
-        2. Copy the files + the requirements.txt to your offline machine and then run <code>pip install --no-index --find-links c:\\[LOCATION OF DOWNLOADED FILES]\\requirements.txt</code>
+        1.  Get whisper <code>pip download git+https://github.com/openai/whisper.git<code>
+        2.  Get unlisted dependency required for offline use <code>pip download blobfile</code>
+        3.  Copy the files to your offline machine and then run <code>pip install openai-whisper-20230314.zip</code> and <code>pip install blobfile-2.0.2-py3-none-any.whl</code>. Note that date/version may change when downloaded.
 4. Install Other Required files: If you are setting up a computer that is offline you also need to download the following files:
     1. Model files place them in C:\Users\[username]\\.cache\whisper e.g. C:\Users\nic\\.cache\whisper. Note: If the links are dead updated links can be found at lines 17-27 here: [__init__.py]( https://github.com/openai/whisper/blob/main/whisper/__init__.py) 
     If you do not download these models ahead of time Whisper will attempt to download them as needed, and will fail if there is no active internet connection.

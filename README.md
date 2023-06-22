@@ -1,7 +1,7 @@
 # WhisperDO
 For use with OpenAI's [Whisper](https://github.com/openai/whisper).
 
-A method to call the Whisper’s python code from the command line without using the CLI (.exe) version of Whisper, in order to solve the issue discussed here: [Stops working after long gap with no speech? #29](https://github.com/openai/whisper/discussions/29). 
+A method to call the Whisper’s python code from the command line without using the CLI (.exe) version of Whisper, in order to solve the issue discussed here: [Issue 29: Stops working after long gap with no speech?](https://github.com/openai/whisper/discussions/29). 
 
 In short, where the audio being transcribed or translated includes any significant gaps the CLI version of Whisper can fail to resume transcoding after the silence, this effect seems most noticeable when the audio is multilingual. 
 
@@ -28,9 +28,8 @@ Purpose: These instructions cover the steps not explicitly set out on the main [
 3. Install Whisper: If you're online you can use pip (it's part of Python), open a command line and type  
     <code>pip install git+https://github.com/openai/whisper.git </code>
     1. OPTIONAL/OFFLINE: Install Python on another computer with an internet connection, then you can use pip to download (but not install) Whisper and its dependencies so you can move them to your offline machine. 
-        1.  Use <code>pip download -r requirements.txt</code> using the [Whisper requirements.txt](https://github.com/openai/whisper/blob/main/requirements.txt).
+        1.  Use <code>pip download -r requirements.txt</code> using the [Whisper offline requirements.txt](https://github.com/nicholasgcotton/WhisperDO/blob/main/requirements.txt)
         2. Copy the files + the requirements.txt to your offline machine and then run <code>pip install --no-index --find-links c:\\[LOCATION OF DOWNLOADED FILES]\\requirements.txt</code>
-        3. Use <code>pip download blobfile</code> to dowload an unlisted dependency (only required when you tweak the code to run offline) and then copy the resulting files to your offline machine. (e.g. blobfile-2.0.2-py3-none-any.whl, filelock-3.12.2-py3-none-any.whl, lxml-4.9.2-cp310-cp310-win_amd64.whl, pycryptodomex-3.18.0-cp35-abi3-win_amd64.whl, urllib3-2.0.3-py3-none-any.whl). Then on the offline machine run <code>pip install blobfile-2.0.2-py3-none-any.whl</code> from the directory containing the cross-loaded files.
 4. Install Other Required files: If you are setting up a computer that is offline you also need to download the following files:
     1. Model files place them in C:\Users\[username]\\.cache\whisper e.g. C:\Users\nic\\.cache\whisper. Note: If the links are dead updated links can be found at lines 17-27 here: [__init__.py]( https://github.com/openai/whisper/blob/main/whisper/__init__.py) 
     If you do not download these models ahead of time Whisper will attempt to download them as needed, and will fail if there is no active internet connection.
@@ -49,7 +48,11 @@ Purpose: These instructions cover the steps not explicitly set out on the main [
          2. Download [Encoder.json](https://openaipublic.blob.core.windows.net/gpt-2/encodings/main/encoder.json)
          3. Install the files to a folder of your choosing, for ease of use I recommend C:\Users\[username]\\.cache\whisper e.g. C:\Users\nic\\.cache\whisper.
          4. You will then need to change your local copy of openai_public.py which will be installed in your python folder e.g. python3.9/site-packages/tiktoken_ext/openai_public.py to point to where you downloaded the files. Change lines 11 and 12 to remove the URL "https://openaipublic.blob.core.windows.net/gpt-2/encodings/main/" and replace it with your local copy, e.g. "C:/Users/nic/.cache/whisper"
+         5. Note: If you did not use the offline pip install mathod you will also need to run <code>pip install blobfile</code> as changing the code within Whisper in the above line triggers a new dependency requirement which is not automatically installed. If you did run the method at 3(i) above this has already been done. 
 
+### Alternative Offline Method
+
+See the pre-compiled .exe version of Whisper provided here: [Purfview / Whisper Standalone](https://github.com/Purfview/whisper-standalone-win)
 
 ## WhisperDO Usage
 

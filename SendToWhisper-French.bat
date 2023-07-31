@@ -1,34 +1,73 @@
 @echo off
+setlocal enabledelayedexpansion
 set model=large
 set lang=French
 set task=translate
-REM Change lines 2-4 to make a new version of the batch file for another language. Don't forget to rename the new file to Whisper-LANGUAGE.bat
-REM Updated 2022-12-01 to add loop for mulitple files of the same language, so items can be queued to run one after another. 
-REM Updated 2023-06-12 For offline models you must add --model_dir to the Whisper command. E.g. "--model_dir "C:\Users\Nicholas\.cache\whisper" at line 23.
-IF "%~1" == "" (GOTO NoSource)
-:loop
-IF "%~1" == "" (GOTO :Complete)
-Set filename="%1"
-For %%A in ("%filename%") do (
-    Set Name=%%~nA
-)
-set RunTime=%time::=%
-set RunTime=%RunTime:~0,-5%
-set target_dir="%USERPROFILE%\Desktop\Transcripts\%date% %RunTime% %Name%"
-set short_dir="Desktop\Transcripts\%date% %RunTime% %Name%"
-echo ------------------------------------------
-echo Target File: %1
-echo Running Whisper --model %model% --language %lang% --task %task% --output_dir %short_dir%
-mkdir %target_dir%
-python -c "import whisper; from whisper.transcribe import cli; cli()" %1 --model %model% --language %lang% --task %task% --output_dir %target_dir%
-echo Task complete. Files have been saved to %short_dir%
-shift
-Goto :loop
+set model_dir="C:\Users\T2User\.cache\whisper"
+REM Change lines 3-6 (and ONLY 3-6) to make a new version of the batch file for other languages/models/tasks. 
+REM Don't forget to rename the new file to reflect the language/model/task. (e.g. SendToWhisper-French).
+IF "%~a1" == "" (
+		GOTO NoSource
+		) ELSE IF "%~a1"=="d----------" (
+		set TARGET=%1
+		GOTO loopfordir
+		) ELSE if "%~a1"=="--a--------" (
+		set TARGET=%1
+		GOTO loopforfiles
+		) ELSE (
+		GOTO NoSource
+		)
+:loopforfiles
+	IF "%~1" == "" (GOTO :Complete)
+	Set filename="%1"
+	For %%A in ("%filename%") do (
+		Set Name=%%~nA
+	)
+	set RunTime=%time::=%
+	set RunTime=%RunTime:~0,-5%
+	set target_dir="%USERPROFILE%\Desktop\Transcripts\%date% %RunTime% %Name%"
+	set short_dir="Desktop\Transcripts2\%date% %RunTime% %Name%"
+	echo -----------------------------Begin New Item----------------------------------------
+	echo Target File: %1
+	echo Target Folder: %target_dir%
+	echo Running Whisper --model_dir %model_dir% --model %model% --language %lang% --task %task% --output_dir %short_dir%
+	mkdir %target_dir%
+	python -c "import whisper; from whisper.transcribe import cli; cli()" %1 --task %task% --model_dir %model_dir% --model %model% --language %lang% --output_dir %target_dir%
+	echo -----------------------------Transcription complete.------------------------------- 
+	shift
+	GOTO loopforfiles
+:loopfordir
+	IF "%~1" == "" (GOTO :Complete)
+	set RunTime=%time::=%
+	set RunTime=%RunTime:~0,-5%
+	for %%i in (%1\*.*) do (
+	set filename=%%i
+	for %%A in ("!filename!") do (
+		set name=%%~nxA
+		echo -----------------------------Begin New Item----------------------------------------
+		echo Target File: !name!
+		set target_dir="%USERPROFILE%\Desktop\Transcripts\!date! !RunTime! !name!"
+		echo Target Folder: !target_dir!
+		set short_dir="Desktop\Transcripts2\!date! !RunTime! !name!"
+		echo Running Whisper --model_dir %model_dir% --model %model% --language %lang% --task %task% --output_dir !short_dir!
+		mkdir !target_dir!
+		python -c "import whisper; from whisper.transcribe import cli; cli()" %%A --task %task% --model_dir %model_dir% --model %model% --language %lang% --output_dir !target_dir!
+		echo -----------------------------Transcription complete.-------------------------------
+		)
+	)
+	shift
+	GOTO loopfordir
 :NoSource
-echo Error: No source file provided. This script will now exit.
+echo ******************************************************************************
+echo **Error: No source file(s) or directory provided. This script will now exit.**
+echo ******************************************************************************
+endlocal
 pause
 exit /b
 :Complete
-echo Task(s) complete.
+echo *****************************************************************************
+echo *******************All transcription(s) complete.****************************
+echo *****************************************************************************
+endlocal
 pause
 exit /b
